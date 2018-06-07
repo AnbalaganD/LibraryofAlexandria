@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textColor="#a9a9a9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/book_name_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#6c6c6c"
+            android:textSize="16sp"
+            tools:text="The Java Programming Language" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/author"
+            android:textColor="#a9a9a9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/book_author_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#6c6c6c"
+            android:textSize="16sp"
+            tools:text="James Gosling and ken Arnold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/isbn"
+            android:textColor="#a9a9a9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/isbn_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#6c6c6c"
+            android:textSize="16sp"
+            tools:text="1485-524-826-7251" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/publisher"
+            android:textColor="#a9a9a9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/publisher_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#6c6c6c"
+            android:textSize="16sp"
+            tools:text="Programming foundation" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/edition"
+            android:textColor="#a9a9a9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/edition_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#6c6c6c"
+            android:textSize="16sp"
+            tools:text="7th Edition" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/year_of_publication"
+            android:textColor="#a9a9a9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/year_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#6c6c6c"
+            android:textSize="16sp"
+            tools:text="2016" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/genre"
+            android:textColor="#a9a9a9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/genre_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#6c6c6c"
+            android:textSize="16sp"
+            tools:text="Technology" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/description"
+            android:textColor="#a9a9a9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/description_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#6c6c6c"
+            android:textSize="16sp"
+            tools:text="This book an introduce to programming in Oracle's Java programming language, a widely used programming language software platform." />
+    </LinearLayout>
+</ScrollView>

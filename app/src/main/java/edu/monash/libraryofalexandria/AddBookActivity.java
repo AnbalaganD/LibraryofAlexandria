@@ -31,7 +31,7 @@ public class AddBookActivity extends AppCompatActivity {
 
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
-            supportActionBar.setHomeAsUpIndicator(R.drawable.close);
+            supportActionBar.setHomeAsUpIndicator(R.drawable.ic_close_white);
             supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
 
@@ -97,7 +97,7 @@ public class AddBookActivity extends AppCompatActivity {
         if (rawBook != null) {
             book.setId(rawBook.getId());
         }
-        new InsertOrUpdateAsycTask(this.rawBook != null).execute(book);
+        new InsertOrUpdateAsyncTask(this.rawBook != null).execute(book);
     }
 
     private void setupData(Book book) {
@@ -128,11 +128,11 @@ public class AddBookActivity extends AppCompatActivity {
         return true;
     }
 
-    private class InsertOrUpdateAsycTask extends AsyncTask<Book, Void, Void> {
+    private static class InsertOrUpdateAsyncTask extends AsyncTask<Book, Void, Void> {
 
         private boolean isUpdateBook = false;
 
-        InsertOrUpdateAsycTask(boolean isUpdate) {
+        InsertOrUpdateAsyncTask(boolean isUpdate) {
             isUpdateBook = isUpdate;
         }
 
@@ -148,7 +148,7 @@ public class AddBookActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            Toast.makeText(AddBookActivity.this, isUpdateBook ? "Book update successfully" : "Book added successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LibraryOfAlexandria.getAppContext(), isUpdateBook ? "Book update successfully" : "Book added successfully", Toast.LENGTH_SHORT).show();
         }
     }
 }

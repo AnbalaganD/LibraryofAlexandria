@@ -91,7 +91,7 @@ public class HomeActivity extends AppCompatActivity implements BookItemClickList
 //        bookList.add(book2);
 //    }
 
-    private class SelectAsyncTask extends AsyncTask<Void, Void, List<Book>> {
+    private static class SelectAsyncTask extends AsyncTask<Void, Void, List<Book>> {
 
         BookSelectListener listener;
         SelectAsyncTask(BookSelectListener listener) {

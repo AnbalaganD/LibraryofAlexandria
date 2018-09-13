@@ -99,7 +99,7 @@ public class SearchBookActivity extends AppCompatActivity implements BookItemCli
 //        searchResultList.add(book2);
 //    }
 
-    private class SearchAsyncTask extends AsyncTask<String, Void, List<Book>> {
+    private static class SearchAsyncTask extends AsyncTask<String, Void, List<Book>> {
 
         SearchBookListener listener;
 

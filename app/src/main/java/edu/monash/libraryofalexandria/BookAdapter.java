@@ -1,5 +1,6 @@
 package edu.monash.libraryofalexandria;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,8 +24,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         this.isSearchType = isSearchType;
     }
 
+    @NonNull
     @Override
-    public BookViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int inflatedResource = isSearchType ? R.layout.item_search_book : R.layout.item_book;
         View view = LayoutInflater.from(parent.getContext()).inflate(inflatedResource, parent, false);
         final BookViewHolder viewHolder = new BookViewHolder(view, isSearchType);
@@ -38,7 +40,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     }
 
     @Override
-    public void onBindViewHolder(BookViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
         holder.setData(bookList.get(position));
     }
 

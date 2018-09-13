@@ -17,11 +17,9 @@ public class Book implements Parcelable {
     private long id;
     @NonNull
     private String name;
-    @NonNull
     private int isbn;
     @NonNull
     private String author;
-    @NonNull
     private int edition;
     @NonNull
     private String publisher;
@@ -29,10 +27,9 @@ public class Book implements Parcelable {
     private String genre;
     @NonNull
     private String description;
-    @NonNull
     private int year;
 
-    public Book(String name, int isbn, String author, int edition, String publisher, String genre, String description, int year) {
+    public Book(@NonNull String name, int isbn, @NonNull String author, int edition, @NonNull String publisher, @NonNull String genre, @NonNull String description, int year) {
         this.name = name;
         this.isbn = isbn;
         this.author = author;
@@ -46,6 +43,7 @@ public class Book implements Parcelable {
     public long getId() {
         return id;
     }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -53,6 +51,7 @@ public class Book implements Parcelable {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -60,6 +59,7 @@ public class Book implements Parcelable {
     public int getIsbn() {
         return isbn;
     }
+
     public void setIsbn(int isbn) {
         this.isbn = isbn;
     }
@@ -67,6 +67,7 @@ public class Book implements Parcelable {
     public String getAuthor() {
         return author;
     }
+
     public void setAuthor(String author) {
         this.author = author;
     }
@@ -74,6 +75,7 @@ public class Book implements Parcelable {
     public int getEdition() {
         return edition;
     }
+
     public void setEdition(int edition) {
         this.edition = edition;
     }
@@ -81,6 +83,7 @@ public class Book implements Parcelable {
     public String getPublisher() {
         return publisher;
     }
+
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
@@ -88,6 +91,7 @@ public class Book implements Parcelable {
     public String getGenre() {
         return genre;
     }
+
     public void setGenre(String genre) {
         this.genre = genre;
     }
@@ -95,6 +99,7 @@ public class Book implements Parcelable {
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -102,6 +107,7 @@ public class Book implements Parcelable {
     public int getYear() {
         return year;
     }
+
     public void setYear(int year) {
         this.year = year;
     }

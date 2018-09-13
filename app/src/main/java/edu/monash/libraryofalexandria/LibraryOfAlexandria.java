@@ -19,10 +19,10 @@ public class LibraryOfAlexandria extends Application {
     }
 
     private void initializeDatabase() {
-        new IntializeDatabaseAsync().execute();
+        new InitializeDatabaseAsync().execute();
     }
 
-    private class IntializeDatabaseAsync extends AsyncTask<Void, Void, Void> {
+    private static class InitializeDatabaseAsync extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
             AppDatabase.getInstance();

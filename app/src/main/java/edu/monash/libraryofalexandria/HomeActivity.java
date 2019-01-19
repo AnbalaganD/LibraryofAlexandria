@@ -1,25 +1,23 @@
 package edu.monash.libraryofalexandria;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class HomeActivity extends AppCompatActivity implements BookItemClickListener {
 
-    private List<Book> bookList;
     private BookAdapter bookAdapter;
+    private HomeViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,21 +27,20 @@ public class HomeActivity extends AppCompatActivity implements BookItemClickList
         RecyclerView booksRecyclerView = findViewById(R.id.books_recycler_view);
         FloatingActionButton addBookFabButton = findViewById(R.id.add_book_floating_button);
 
-        bookList = new ArrayList<>();
 //        addDummyBooks();
         booksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        bookAdapter = new BookAdapter(this, bookList, false);
+        bookAdapter = new BookAdapter(this, false);
         booksRecyclerView.setAdapter(bookAdapter);
         booksRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL));
 
-        addBookFabButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, AddBookActivity.class));
-            }
-        });
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
 
-        getAllBook();
+        addBookFabButton.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, AddBookActivity.class)));
+        addObservables();
+    }
+
+    private void addObservables() {
+        viewModel.getBookList().observe(this, books -> bookAdapter.updateItems(books));
     }
 
     @Override
@@ -69,20 +66,17 @@ public class HomeActivity extends AppCompatActivity implements BookItemClickList
 
     @Override
     public void onItemClicked(View v, int position) {
-        Intent intent = new Intent(this, BookDetailActivity.class);
-        intent.putExtra("Book", bookList.get(position));
-        startActivity(intent);
+//        Intent intent = new Intent(this, BookDetailActivity.class);
+//        intent.putExtra("Book", bookList.get(position));
+//        startActivity(intent);
     }
 
-    private void getAllBook() {
-        new SelectAsyncTask(new BookSelectListener() {
-            @Override
-            public void onBookFetched(List<Book> books) {
-                bookList.addAll(books);
-                bookAdapter.updateItems();
-            }
-        }).execute();
-    }
+//    private void getAllBook() {
+//        new SelectAsyncTask(books -> {
+//            bookList.addAll(books);
+//            bookAdapter.updateItems();
+//        }).execute();
+//    }
 
 //    private void addDummyBooks() {
 //        Book book1 = new Book("The Java Programming Language", 1, "James Gosling and ken Arnold", 2, "Programming foundation", "genre", "This book an introduce to programming in Oracle's Java programming language, a widely used programming language software platform.", 2017);
@@ -91,23 +85,24 @@ public class HomeActivity extends AppCompatActivity implements BookItemClickList
 //        bookList.add(book2);
 //    }
 
-    private static class SelectAsyncTask extends AsyncTask<Void, Void, List<Book>> {
-
-        BookSelectListener listener;
-        SelectAsyncTask(BookSelectListener listener) {
-            this.listener = listener;
-        }
-
-        @Override
-        protected List<Book> doInBackground(Void... voids) {
-            return AppDatabase.getInstance().bookDao().getAll();
-        }
-
-        @Override
-        protected void onPostExecute(List<Book> books) {
-            super.onPostExecute(books);
-            Log.e("Book list:", books.toString());
-            listener.onBookFetched(books);
-        }
-    }
+//    private static class SelectAsyncTask extends AsyncTask<Void, Void, List<Book>> {
+//
+//        BookSelectListener listener;
+//
+//        SelectAsyncTask(BookSelectListener listener) {
+//            this.listener = listener;
+//        }
+//
+//        @Override
+//        protected List<Book> doInBackground(Void... voids) {
+//            return AppDatabase.getInstance().bookDao().getAll();
+//        }
+//
+//        @Override
+//        protected void onPostExecute(List<Book> books) {
+//            super.onPostExecute(books);
+//            Log.e("Book list:", books.toString());
+//            listener.onBookFetched(books);
+//        }
+//    }
 }

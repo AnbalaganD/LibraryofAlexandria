@@ -12,7 +12,7 @@
         android:orientation="vertical"
         android:showDividers="middle">
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/book_name">
@@ -25,9 +25,9 @@
                 android:singleLine="true"
                 android:textSize="16sp"
                 tools:ignore="LabelFor" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/isbn">
@@ -40,9 +40,9 @@
                 android:singleLine="true"
                 android:textSize="16sp"
                 tools:ignore="LabelFor" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/author">
@@ -55,9 +55,9 @@
                 android:singleLine="true"
                 android:textSize="16sp"
                 tools:ignore="LabelFor" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/publisher">
@@ -70,9 +70,9 @@
                 android:singleLine="true"
                 android:textSize="16sp"
                 tools:ignore="LabelFor" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edition">
@@ -85,9 +85,9 @@
                 android:singleLine="true"
                 android:textSize="16sp"
                 tools:ignore="LabelFor" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/year_of_publication">
@@ -100,9 +100,9 @@
                 android:singleLine="true"
                 android:textSize="16sp"
                 tools:ignore="LabelFor" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/genre">
@@ -115,7 +115,7 @@
                 android:singleLine="true"
                 android:textSize="16sp"
                 tools:ignore="LabelFor" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

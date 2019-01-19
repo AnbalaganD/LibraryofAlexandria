@@ -2,8 +2,8 @@ package edu.monash.libraryofalexandria;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -130,7 +130,7 @@ public class AddBookActivity extends AppCompatActivity {
 
     private static class InsertOrUpdateAsyncTask extends AsyncTask<Book, Void, Void> {
 
-        private boolean isUpdateBook = false;
+        private boolean isUpdateBook;
 
         InsertOrUpdateAsyncTask(boolean isUpdate) {
             isUpdateBook = isUpdate;

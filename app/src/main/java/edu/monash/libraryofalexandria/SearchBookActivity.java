@@ -3,11 +3,11 @@ package edu.monash.libraryofalexandria;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -25,7 +25,7 @@ public class SearchBookActivity extends AppCompatActivity implements BookItemCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_book);
 
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         ActionBar supportActionBar = getSupportActionBar();
@@ -75,19 +75,16 @@ public class SearchBookActivity extends AppCompatActivity implements BookItemCli
     private void onSearch(String keyword) {
         if (keyword == null || keyword.trim().equals("")) {
             searchResultList.clear();
-            mSearchBookAdapter.updateItems();
+//            mSearchBookAdapter.updateItems();
             return;
         }
         if (searchAsyncTask != null) {
             searchAsyncTask.cancel(true);
         }
-        searchAsyncTask = new SearchAsyncTask(new SearchBookListener() {
-            @Override
-            public void onSearchComplete(List<Book> bookList) {
-                searchResultList.clear();
-                searchResultList.addAll(bookList);
-                mSearchBookAdapter.updateItems();
-            }
+        searchAsyncTask = new SearchAsyncTask(bookList -> {
+            searchResultList.clear();
+            searchResultList.addAll(bookList);
+//            mSearchBookAdapter.updateItems();
         });
         searchAsyncTask.execute(keyword.trim());
     }

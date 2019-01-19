@@ -1,7 +1,8 @@
 package edu.monash.libraryofalexandria;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,18 +25,18 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         this.isSearchType = isSearchType;
     }
 
+    BookAdapter(BookItemClickListener listener, boolean isSearchType) {
+        this.listener = listener;
+        this.isSearchType = isSearchType;
+    }
+
     @NonNull
     @Override
     public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int inflatedResource = isSearchType ? R.layout.item_search_book : R.layout.item_book;
         View view = LayoutInflater.from(parent.getContext()).inflate(inflatedResource, parent, false);
         final BookViewHolder viewHolder = new BookViewHolder(view, isSearchType);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onItemClicked(view, viewHolder.getAdapterPosition());
-            }
-        });
+        view.setOnClickListener(selectedView -> listener.onItemClicked(selectedView, viewHolder.getAdapterPosition()));
         return viewHolder;
     }
 
@@ -49,7 +50,13 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         return bookList == null ? 0 : bookList.size();
     }
 
-    public void updateItems() {
+    void updateItems(List<Book> bookList) {
+        if (this.bookList == null) {
+            this.bookList = bookList;
+        } else {
+            this.bookList.clear();
+            this.bookList.addAll(bookList);
+        }
         notifyDataSetChanged();
     }
 

@@ -1,10 +1,10 @@
 package edu.monash.libraryofalexandria;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 import android.os.Parcelable;
 import android.os.Parcel;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Created by deepi on 18/03/2018.

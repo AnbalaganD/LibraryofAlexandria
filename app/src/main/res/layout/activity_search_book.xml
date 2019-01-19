@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
@@ -17,7 +17,7 @@
         app:contentInsetStart="0dp"
         app:contentInsetStartWithNavigation="0dp">
 
-        <android.support.v7.widget.SearchView
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/search_book_search_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,9 +27,9 @@
             app:queryHint="@string/search_book_hints"
             app:searchIcon="@null"
             app:submitBackground="@null" />
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_result_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

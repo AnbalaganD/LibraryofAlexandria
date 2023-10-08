@@ -2,9 +2,6 @@
 
     <string name="app_name">Library of Alexandria
     </string>
-    <string name="action_settings">Settings</string>
-    <string name="search_item">Search</string>
-    <string name="textview">TextView</string>
     <string name="year_of_publication">Year of Publication</string>
     <string name="genre">Genre</string>
     <string name="description_hints">Enter your description here...</string>

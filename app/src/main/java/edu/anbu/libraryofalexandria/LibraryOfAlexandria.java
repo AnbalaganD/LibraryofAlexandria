@@ -1,4 +1,4 @@
-package edu.monash.libraryofalexandria;
+package edu.anbu.libraryofalexandria;
 
 import android.app.Application;
 import android.content.Context;

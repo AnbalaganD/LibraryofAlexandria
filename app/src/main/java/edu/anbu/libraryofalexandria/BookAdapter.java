@@ -1,4 +1,4 @@
-package edu.monash.libraryofalexandria;
+package edu.anbu.libraryofalexandria;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;

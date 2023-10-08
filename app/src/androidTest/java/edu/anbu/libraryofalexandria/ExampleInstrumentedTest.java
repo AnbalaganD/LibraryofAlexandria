@@ -1,4 +1,4 @@
-package edu.monash.libraryofalexandria;
+package edu.anbu.libraryofalexandria;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;

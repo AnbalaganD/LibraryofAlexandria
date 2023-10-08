@@ -1,4 +1,4 @@
-package edu.monash.libraryofalexandria;
+package edu.anbu.libraryofalexandria;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

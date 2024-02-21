@@ -6,7 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,7 +30,7 @@ class HomeActivity : AppCompatActivity(), BookItemClickListener {
                 LinearLayoutManager.HORIZONTAL
             )
         )
-        viewModel = ViewModelProviders.of(this)[HomeViewModel::class.java]
+        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         addBookFabButton.setOnClickListener {
             startActivity(
                 Intent(

@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-parcelize")
+    id("com.google.devtools.ksp")
     kotlin("android")
 }
 
@@ -40,9 +41,11 @@ android {
 dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.2.0-alpha13")
-    implementation("com.google.android.material:material:1.10.0")
-    implementation("androidx.room:room-runtime:2.6.0-rc01")
-    annotationProcessor("androidx.room:room-compiler:2.6.0-rc01")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("com.google.devtools.ksp:symbol-processing-api:1.9.21-1.0.15")
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.7.0")
 }

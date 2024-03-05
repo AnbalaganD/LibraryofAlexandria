@@ -62,8 +62,8 @@ class HomeActivity : AppCompatActivity(), BookItemClickListener {
     }
 
     override fun onItemClicked(v: View?, position: Int) {
-//        Intent intent = new Intent(this, BookDetailActivity.class);
-//        intent.putExtra("Book", bookList.get(position));
-//        startActivity(intent);
+        val intent = Intent(this, BookDetailActivity::class.java)
+        intent.putExtra("Book", viewModel.getBookList()?.value?.get(position))
+        startActivity(intent)
     }
 }

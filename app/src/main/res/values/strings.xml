@@ -1,7 +1,5 @@
 <resources>
-
-    <string name="app_name">Library of Alexandria
-    </string>
+    <string name="app_name">Library of Alexandria</string>
     <string name="year_of_publication">Year of Publication</string>
     <string name="genre">Genre</string>
     <string name="description_hints">Enter your description here...</string>
@@ -21,5 +19,5 @@
     <string name="short_by_author">Short by author</string>
     <string name="short_by_name">Short by name</string>
     <string name="short_by_publisher">Short by publisher</string>
-
+    <string name="add_book_button">Add book button</string>
 </resources>

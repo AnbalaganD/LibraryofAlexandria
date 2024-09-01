@@ -1,13 +1,15 @@
 package edu.anbu.libraryofalexandria
 
-import android.os.AsyncTask
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import edu.anbu.libraryofalexandria.AppDatabase.Companion.instance
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 class AddBookActivity : AppCompatActivity() {
@@ -20,6 +22,7 @@ class AddBookActivity : AppCompatActivity() {
     private lateinit var mYearEditText: EditText
     private lateinit var mDescriptionEditText: EditText
     private var rawBook: Book? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_book)
@@ -82,11 +85,34 @@ class AddBookActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Year should be an integer", Toast.LENGTH_SHORT).show()
         }
-        val book = Book(bookName, isbn, author, edition, publisher, genre, description, year)
+        val book = Book(
+            name = bookName,
+            isbn = isbn,
+            author = author,
+            edition = edition,
+            publisher = publisher,
+            genre = genre,
+            description = description,
+            year = year
+        )
         if (rawBook != null) {
             book.id = rawBook!!.id
         }
-        InsertOrUpdateAsyncTask(rawBook != null).execute(book)
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            if (rawBook != null) {
+                instance.bookDao().update(book)
+            } else {
+                instance.bookDao().insert(book)
+            }
+            lifecycleScope.launch {
+                Toast.makeText(
+                    this@AddBookActivity,
+                    if (rawBook != null) "Book update successfully" else "Book added successfully",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
     private fun setupData(book: Book?) {
@@ -112,25 +138,5 @@ class AddBookActivity : AppCompatActivity() {
             return false
         }
         return true
-    }
-
-    private inner class InsertOrUpdateAsyncTask(private val isUpdateBook: Boolean) :
-        AsyncTask<Book, Void?, Void?>() {
-        override fun doInBackground(vararg books: Book): Void? {
-            if (isUpdateBook) books[0].let {
-                instance.bookDao()
-                    .update(it)
-            } else instance.bookDao().insert(books.toList())
-            return null
-        }
-
-        override fun onPostExecute(aVoid: Void?) {
-            super.onPostExecute(aVoid)
-            Toast.makeText(
-                LibraryOfAlexandria.appContext,
-                if (isUpdateBook) "Book update successfully" else "Book added successfully",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
     }
 }

@@ -4,53 +4,33 @@ import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+
 @Entity
-class Book : Parcelable {
+data class Book(
     @PrimaryKey(autoGenerate = true)
-    var id: Long = 0
-    var name: String
-    var isbn: Int
-    var author: String
-    var edition: Int
-    var publisher: String
-    var genre: String
-    var description: String
+    var id: Long = 0,
+    var name: String,
+    var isbn: Int,
+    var author: String,
+    var edition: Int,
+    var publisher: String,
+    var genre: String,
+    var description: String,
     var year: Int
+) : Parcelable {
+    private constructor(parcel: Parcel) : this(
+        id = parcel.readLong(),
+        name = parcel.readString()!!,
+        isbn = parcel.readInt(),
+        author = parcel.readString()!!,
+        edition = parcel.readInt(),
+        publisher = parcel.readString()!!,
+        genre = parcel.readString()!!,
+        description = parcel.readString()!!,
+        year = parcel.readInt()
+    )
 
-    constructor(
-        name: String,
-        isbn: Int,
-        author: String,
-        edition: Int,
-        publisher: String,
-        genre: String,
-        description: String,
-        year: Int
-    ) {
-        this.name = name
-        this.isbn = isbn
-        this.author = author
-        this.edition = edition
-        this.publisher = publisher
-        this.genre = genre
-        this.description = description
-        this.year = year
-    }
-    constructor(`in`: Parcel) {
-        id = `in`.readLong()
-        name = `in`.readString()!!
-        isbn = `in`.readInt()
-        author = `in`.readString()!!
-        edition = `in`.readInt()
-        publisher = `in`.readString()!!
-        genre = `in`.readString()!!
-        description = `in`.readString()!!
-        year = `in`.readInt()
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
+    override fun describeContents(): Int = 0
 
     override fun writeToParcel(parcel: Parcel, i: Int) {
         parcel.writeLong(id)

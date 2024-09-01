@@ -6,6 +6,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 class BookDetailActivity : AppCompatActivity() {
@@ -17,7 +20,8 @@ class BookDetailActivity : AppCompatActivity() {
     private lateinit var mGenreTextView: TextView
     private lateinit var mYearTextView: TextView
     private lateinit var mDescriptionTextView: TextView
-    private var book: Book? = null
+    private lateinit var book: Book
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_details)
@@ -31,7 +35,7 @@ class BookDetailActivity : AppCompatActivity() {
         mGenreTextView = findViewById(R.id.genre_text_view)
         mYearTextView = findViewById(R.id.year_text_view)
         mDescriptionTextView = findViewById(R.id.description_text_view)
-        val book = intent.getParcelableExtra<Book>("Book")
+        val book = intent.getParcelableExtra<Book>("Book") ?: throw RuntimeException("Should provide book")
         setupData(book)
     }
 
@@ -52,8 +56,7 @@ class BookDetailActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setupData(book: Book?) {
-        if (book == null) return
+    private fun setupData(book: Book) {
         this.book = book
         mBookNameTextView.text = book.name
         mISBNNameTextView.text = String.format(Locale.ENGLISH, "%d", book.isbn)
@@ -66,13 +69,14 @@ class BookDetailActivity : AppCompatActivity() {
     }
 
     private fun onEditBook() {
-        if (book == null) return
         val intent = Intent(this, AddBookActivity::class.java)
         intent.putExtra("Book", book)
         startActivity(intent)
     }
 
     private fun onDeleteBook() {
-        //TODO implement delete logic here....
+        lifecycleScope.launch(Dispatchers.IO) {
+            AppDatabase.instance.bookDao().delete(book)
+        }
     }
 }

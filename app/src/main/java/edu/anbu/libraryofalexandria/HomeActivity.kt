@@ -15,6 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class HomeActivity : AppCompatActivity(), BookItemClickListener {
     private lateinit var bookAdapter: BookAdapter
     private lateinit var viewModel: HomeViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -43,7 +44,9 @@ class HomeActivity : AppCompatActivity(), BookItemClickListener {
     }
 
     private fun addObservables() {
-        viewModel.getBookList()?.observe(this) { books: List<Book> -> bookAdapter.updateItems(books) }
+        viewModel.getBookList()?.observe(this) {
+            books: List<Book> -> bookAdapter.updateItems(books)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

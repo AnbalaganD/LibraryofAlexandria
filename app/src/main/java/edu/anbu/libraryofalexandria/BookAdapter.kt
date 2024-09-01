@@ -53,12 +53,15 @@ class BookAdapter : RecyclerView.Adapter<BookViewHolder> {
         return if (bookList == null) 0 else bookList!!.size
     }
 
-    fun updateItems(bookList: List<Book>?) {
+    fun updateItems(books: List<Book>?) {
         if (this.bookList == null) {
             this.bookList = mutableListOf()
         }
+
         this.bookList?.clear()
-        this.bookList?.addAll(bookList!!)
+        if (books != null) {
+            this.bookList?.addAll(books)
+        }
         notifyDataSetChanged()
     }
 

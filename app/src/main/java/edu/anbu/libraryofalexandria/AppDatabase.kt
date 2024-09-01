@@ -18,7 +18,8 @@ abstract class AppDatabase : RoomDatabase() {
                 LibraryOfAlexandria.appContext,
                 AppDatabase::class.java,
                 DATABASE_NAME
-            ).build()
+            )
+            .build()
         }
     }
 }

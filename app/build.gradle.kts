@@ -1,8 +1,8 @@
 plugins {
-    id("com.android.application")
-    id("kotlin-parcelize")
-    id("com.google.devtools.ksp")
-    kotlin("android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.androidx.room)
 }
 
 android {
@@ -25,6 +25,10 @@ android {
         jvmTarget = "11"
     }
 
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -42,7 +46,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.material)
-    implementation(libs.symbol.processing.api)
 
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)

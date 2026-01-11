@@ -52,6 +52,8 @@ dependencies {
     implementation(libs.material)
 
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.fragment)
     ksp(libs.androidx.room.compiler)
 
     implementation(libs.androidx.lifecycle.extensions)

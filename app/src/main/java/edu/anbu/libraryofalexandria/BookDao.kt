@@ -24,5 +24,5 @@ interface BookDao {
     fun delete(book: Book)
 
     @Query("select * from Book where Book.name like :keyword or Book.author like :keyword or Book.description like :keyword or Book.genre like :keyword or Book.publisher like :keyword")
-    fun search(keyword: String?): List<Book>?
+    fun search(keyword: String?): List<Book>
 }

@@ -134,7 +134,7 @@ class AddBookActivity : AppCompatActivity() {
     private fun tryParseInt(str: String): Boolean {
         try {
             str.toInt()
-        } catch (ex: Exception) {
+        } catch (_: Exception) {
             return false
         }
         return true

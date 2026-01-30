@@ -14,12 +14,12 @@
         android:paddingTop="10dp"
         tools:text="The Java Programming Language"
         android:textColor="#dc000000"
-        android:textSize="16dp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/book_author_text_view"
         android:layout_width="match_parent"
-        android:layout_height="15dp"
+        android:layout_height="wrap_content"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         tools:text="James Gosling and ken Arnold"
@@ -40,7 +40,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="@color/light_gray"/>
